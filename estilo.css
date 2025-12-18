@@ -1,0 +1,1324 @@
+/* --- VARIABLES Y RESET --- */
+:root {
+
+    --primary-purple: #9787da;
+    --dark-purple: #775ce6;
+    --bg-blue: #98bde6; 
+    --text-white: #ffffff;
+    --text-dark: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-blue);
+    overflow-x: hidden;
+}
+
+/* --- HEADER --- */
+header {
+    background-color: var(--primary-purple);
+    color: var(--text-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+}
+
+/*rgba(0,0,0,0.1);
+
+background-color: var( -- color-header-bg);
+padding: 1rem 0;
+position: sticky;
+top: 0;
+
+box-shadow: 0 2px 10px*/
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 60px; /* Ajusta según el tamaño real de tu logo */
+    height: 60px;
+    border-radius: 5px;
+    background: rgb(193, 193, 193);
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-white);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: opacity 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* --- MAIN HERO SECTION --- */
+.hero {
+    position: relative; /* Para posicionar el chatbot */
+    padding: 2rem 5%;
+    text-align: center;
+    min-height: 80vh;
+}
+
+.hero h1 {
+    color: var(--text-white);
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+/* --- CHATBOT --- */
+.chatbot-container {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.chatbot-icon {
+    width: 60px;
+    height: 60px;
+    background-color: transparent; 
+    border: 3px solid #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+/* Simulación simple del icono con CSS/SVG para no depender de librerías externas */
+.chatbot-icon svg {
+    width: 35px;
+    height: 35px;
+    fill: #000;
+}
+
+.chatbot-text {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* --- CARRUSEL DE PRODUCTOS (CSS SCROLL) --- */
+.products-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Permite scroll horizontal */
+    padding: 20px;
+    scroll-snap-type: x mandatory; /* Efecto magnético al hacer scroll */
+    scrollbar-width: thin; /* Barra de scroll delgada en Firefox */
+}
+
+/* Estilo para ocultar barra de scroll en Chrome/Safari/Edge si prefieres */
+.products-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+.products-carousel::-webkit-scrollbar-thumb {
+    background-color: var(--dark-purple);
+    border-radius: 4px;
+}
+
+.product-card {
+    flex: 0 0 auto; /* No encoger, no crecer, base automática */
+    width: 250px;   /* Ancho fijo de la tarjeta como en la foto */
+    height: 350px;
+    background-color: rgba(255, 255, 255, 0.4); /* Fondo semitransparente placeholder */
+    border-radius: 20px;
+    scroll-snap-align: center; /* Alineación del snap */
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    
+    /* Centrar contenido placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Placeholder para imagen (Simula donde irán tus fotos) */
+.product-image-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #ddd; /* Color gris mientras no hay foto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Si tienes las imágenes, la etiqueta img usará esta clase */
+.product-img-real {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la foto cubra todo el espacio sin deformarse */
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    nav ul {
+        gap: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .chatbot-container {
+        position: relative; /* En móvil, mejor que no flote encima del contenido */
+        top: 0;
+        right: 0;
+        margin-bottom: 20px;
+        align-self: flex-end;
+    }
+
+    .texto1 h1 {
+        font-weight: bold;
+        font-size: 2000px
+    }
+}
+.contacto-section {
+    /* Degradado azul similar a la imagen */
+    background: linear-gradient(180deg, #6FA8F5 0%, #7d6de3 100%);
+    color: var(--text-white);
+    padding: 3rem 5%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.titulo-contacto {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    text-transform: capitalize;
+}
+
+/* Rejilla Superior (3 Columnas) */
+.contacto-top-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.info-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-item p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.small-text {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Iconos de Redes Sociales */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-link svg {
+    width: 40px;
+    height: 40px;
+    fill: white; /* Iconos blancos */
+    transition: transform 0.2s ease;
+}
+
+.social-link:hover svg {
+    transform: scale(1.1);
+}
+
+/* Layout Inferior (Dirección vs Formulario) */
+.contacto-bottom-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Columna Izquierda: Dirección y Mapa */
+.direccion-container {
+    text-align: left;
+}
+
+.direccion-texto h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.direccion-texto p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 90%;
+}
+
+.ubicados-text {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center; /* Centrado sobre el mapa como en la foto */
+}
+
+/* Simulación del Mapa */
+.mapa-placeholder {
+    width: 100%;
+    height: 250px;
+    background-color: #f0f0f0;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Google_Maps_Logo_2020.svg/512px-Google_Maps_Logo_2020.svg.png'); /* Placeholder genérico */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pin-mapa {
+    background: white;
+    color: red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Columna Derecha: Formulario */
+.formulario-container {
+    text-align: left;
+}
+
+.formulario-container h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.form-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-label {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: -5px; /* Acercar label al input */
+}
+
+.input-field {
+    background-color: rgba(255, 255, 255, 0.9); /* Casi blanco */
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    font-family: inherit;
+    color: #333;
+}
+
+.input-field:focus {
+    outline: 2px solid var(--dark-purple);
+}
+
+.btn-enviar {
+    background-color: #5c4ce3; /* Un morado vibrante */
+    color: white;
+    border: none;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+    width: 150px; /* Botón no full width */
+    align-self: flex-end; /* Alinear a la derecha */
+}
+
+.btn-enviar:hover {
+    background-color: #4b3bc2;
+}
+
+/* Responsive para Contacto */
+@media (max-width: 768px) {
+    .contacto-bottom-layout {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        gap: 3rem;
+    }
+    
+    .direccion-texto, .ubicados-text {
+        text-align: center;
+    }
+    
+    .direccion-texto p {
+        margin: 0 auto 2rem auto; /* Centrar texto */
+    }
+
+    .btn-enviar {
+        width: 100%; /* Botón ancho completo en móvil */
+    }
+}
+
+/* --- SECCIÓN VIDEO --- */
+.video-section {
+    padding: 3rem 5%;
+    text-align: center;
+    background-color: transparent; /* O puedes poner un color de fondo suave */
+}
+
+/* Corrección para tu clase texto1 */
+.texto1 {
+    font-size: 2.5rem; /* Tamaño grande pero legible */
+    color: var(--text-white); /* Usando tus variables */
+    margin-bottom: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+/* Contenedor para limitar el ancho del video */
+.video-container {
+    max-width: 800px; /* Ancho máximo para que no ocupe toda la pantalla en PC */
+    margin: 0 auto;   /* Esto centra el contenedor horizontalmente */
+    position: relative;
+    border-radius: 20px; /* Bordes redondeados */
+    overflow: hidden;    /* Asegura que el video respete los bordes redondeados */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra elegante */
+    border: 5px solid rgba(255, 255, 255, 0.3); /* Marco semitransparente opcional */
+}
+
+/* Estilo para el reproductor (ya sea video local o iframe) */
+.video-player {
+    width: 100%;       /* Ocupa todo el ancho del contenedor */
+    height: auto;      /* Altura automática para mantener proporción */
+    display: block;    /* Elimina espacios extra abajo */
+    aspect-ratio: 16 / 9; /* Fuerza la proporción panorámica estándar */
+}
+
+/* RESPONSIVE: Ajuste para celulares */
+@media (max-width: 768px) {
+    .texto1 {
+        font-size: 1.8rem; /* Texto un poco más pequeño en celular */
+    }
+    
+    .video-container {
+        width: 100%; /* En celular ocupa todo el ancho disponible */
+        border-width: 2px; /* Borde más fino */
+    }
+}
+
+/* Estilo para el enlace activo en el menú */
+nav a.active {
+    text-decoration: underline;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.nosotros-page {
+    padding: 3rem 5%;
+    /* El fondo ya es azul claro por el body */
+}
+
+/* Título Principal "¿Quiénes somos?" */
+.titulo-nosotros {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #f0f0f0; /* Usa tu color primario */
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+/* Línea decorativa debajo del título */
+.titulo-nosotros::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-purple);
+    margin: 1rem auto 0;
+}
+
+/* Contenedor Morado Genérico (para ambos bloques grandes) */
+.purple-container {
+    background-color: var(--primary-purple); /* Usa tu variable de color */
+    color: var(--text-white);
+    padding: 3rem;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* --- Primer Contenedor: Texto y M/V --- */
+.main-text-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: justify; /* Justificado como en la imagen */
+}
+
+/* Grid para Misión y Visión */
+.mision-vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Tarjetas Individuales de Misión/Visión */
+.mv-card {
+    background-color: rgba(255, 255, 255, 0.15); /* Un tono más claro/transparente */
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.mv-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.mv-card p {
+    font-size: 1rem;
+    margin-bottom: 0; /* Quitar margen inferior al último párrafo */
+    text-align: left; /* Alinear a la izquierda */
+}
+
+/* --- Segundo Contenedor: Encuéntranos --- */
+.encuentranos-container {
+    text-align: center;
+}
+
+.titulo-encuentranos {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+/* Grid para Datos de Contacto */
+.datos-contacto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem 4rem; /* Gap vertical y horizontal */
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto; /* Centrar el grid */
+}
+
+/* Ítem individual de contacto */
+.dato-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* El ítem de ubicación ocupa dos filas en pantallas grandes para replicar el diseño */
+@media (min-width: 768px) {
+    .location-item {
+        grid-row: span 2;
+    }
+}
+
+/* Círculo para el icono */
+.icon-circle {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Evita que el círculo se aplaste */
+}
+
+.icon-circle svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--text-white);
+}
+
+.dato-texto h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.dato-texto p {
+    font-size: 1rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* Separador y Redes Sociales */
+.separador-redes {
+    border: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 3rem 0 2rem;
+}
+
+.titulo-redes {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.redes-sociales-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Enlaces circulares de redes sociales */
+.social-circle-link {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.social-circle-link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+.social-circle-link svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-white);
+}
+
+/* --- RESPONSIVE PARA PÁGINA NOSOTROS --- */
+@media (max-width: 768px) {
+    .purple-container {
+        padding: 2rem;
+    }
+
+    .mision-vision-grid {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        gap: 1.5rem;
+    }
+
+    .datos-contacto-grid {
+        grid-template-columns: 1fr; /* Una columna para contacto en móvil */
+        gap: 2rem;
+    }
+    
+    /* Resetear el span de filas en móvil */
+    .location-item {
+        grid-row: auto; 
+    }
+}
+
+.audio-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 20px auto; /* Centrado en la página */
+}
+
+/* Estilo del reproductor de audio */
+audio {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    outline: none;
+    height: 40px; 
+}
+
+
+/* --- NUEVA SECCIÓN DE PRODUCTOS (GRID) --- */
+
+.products-section {
+    padding: 4rem 5%;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil */
+    text-align: center;
+}
+
+.container-productos {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo-seccion {
+    font-size: 2.5rem;
+    color: var(--text-white);
+    margin-bottom: 3rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Grid layout */
+.products-grid {
+    display: grid;
+    /* Esto hace que sea responsive automáticamente (móvil 1 col, tablet 2, pc 3 o 4) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* IMPORTANTE: Sobreescribimos estilos específicos para cuando
+   la tarjeta está dentro del Grid, para no afectar al carrusel 
+*/
+.products-grid .grid-card {
+    width: 100%;       /* Ocupa el espacio de la celda del grid */
+    height: auto;      /* Altura automática según contenido */
+    flex: unset;       /* Quita el comportamiento del carrusel */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Tarjetas más claras para leer texto */
+}
+
+/* Ajuste de imágenes dentro del grid */
+.grid-card img {
+    width: 100%;
+    height: 250px;     /* Altura fija para la imagen */
+    object-fit: cover;
+    border-bottom: 5px solid var(--primary-purple);
+}
+
+.product-info {
+    padding: 15px;
+    color: var(--text-dark);
+}
+
+.product-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.price {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--dark-purple);
+    font-weight: bold;
+}
+
+/* Botón principal */
+.btn-container {
+    margin-top: 2rem;
+}
+
+.btn-primary {
+    background-color: var(--dark-purple);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: inline-block; /* Importante para que respete el padding */
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-purple);
+    transform: scale(1.05);
+}
+
+/* --- MEDIA QUERY DEL CÓDIGO NUEVO (Adaptado) --- */
+@media (min-width: 768px) {
+    /* Ajustes específicos para pantallas grandes si son necesarios */
+    .titulo-seccion { 
+        font-size: 3rem; 
+    }
+    
+    /* Forzar 4 columnas en pantallas muy anchas si lo deseas */
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+.tituloA{
+    font-size: 15vh;
+    color: #ffffff;
+    text-align: center;
+}
+
+model-viewer{
+    width: 100vw;
+    height: 50vh;
+
+}
+
+.contenedor3d{
+    background-color: #7d75b7;
+    justify-content: center;
+    position: relative;
+}
+
+img {
+    mix-blend-mode: multiply; /* Mezcla colores */
+    background-color: transparent;
+  }
+
+
+/* --- FOOTER --- */
+.site-footer {
+    background-color: var(--dark-purple); /* Fondo oscuro para anclar la página */
+    color: var(--text-white);
+    padding-top: 3rem;
+    margin-top: auto; /* Si usas flex en el body, esto empuja el footer abajo */
+    border-top: 5px solid var(--primary-purple); /* Línea decorativa superior */
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las columnas bajen en celular */
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5% 3rem;
+    gap: 2rem;
+}
+
+.footer-col {
+    flex: 1 1 250px; /* Crecen y se encogen, base de 250px */
+}
+
+.footer-col h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid var(--bg-blue); /* Detalle en azul claro */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Estilos de Logo en Footer */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.footer-logo-img {
+    width: 35px;
+    height: auto;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+.footer-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* Enlaces del Footer */
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--bg-blue); /* Color hover usando tu variable */
+    padding-left: 5px; /* Pequeño movimiento a la derecha */
+}
+
+/* Información de Contacto */
+.contact-info {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Iconos Sociales */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.social-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--text-white);
+}
+
+.social-icon:hover {
+    background-color: var(--primary-purple);
+    transform: translateY(-3px);
+}
+
+/* Barra de Copyright */
+.footer-copyright {
+    background-color: rgba(0, 0, 0, 0.2); /* Un poco más oscuro que el footer */
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Responsive simple */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo, .contact-info, .footer-socials {
+        justify-content: center; /* Centrar todo en móvil */
+    }
+    
+    .footer-links a:hover {
+        padding-left: 0; /* Quitar efecto de movimiento en móvil */
+    }
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 50px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+    font-size: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* --- TARJETA DE PRODUCTO --- */
+.product-card {
+    background-color: #e1e1e1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(119, 92, 230, 0.25);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--accent);
+    color: var(--text-dark);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.product-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.category {
+    color: var(--secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.product-desc {
+    color: #666; 
+    font-size: 0.9rem; 
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin-top: auto; 
+    margin-bottom: 1rem;
+}
+
+.btn-add {
+    background-color:#bc71e5;
+    color: #e1e1e1;
+    border: none;
+    padding: 15px;
+    margin-bottom: 70px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.btn-add:hover {
+    background-color:#5a99e1;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--text-dark);
+    color: var(--bg-white);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+footer p span {
+    color: var(--accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
+.chat-window {
+    display: none; /* Oculto al inicio */
+    position: fixed; /* Fijo en la pantalla aunque hagas scroll */
+    bottom: 80px;
+    right: 30px;
+    width: 320px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000; /* Para que aparezca encima de todo (incluso del video) */
+    animation: slideUp 0.3s ease;
+    border: 2px solid var(--primary-purple);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cabecera del chat */
+.chat-header {
+    background-color: var(--dark-purple);
+    color: var(--text-white);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.chat-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Cuerpo del chat (mensajes) */
+.chat-body {
+    flex: 1; /* Ocupa el espacio restante */
+    padding: 15px;
+    background-color: #f4f4f4;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.bot-message {
+    background-color: var(--bg-blue);
+    color: var(--text-dark);
+    align-self: flex-start; /* Alineado a la izquierda */
+    border-bottom-left-radius: 0;
+}
+
+/* Pie del chat (input) */
+.chat-footer {
+    padding: 10px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    display: flex;
+    gap: 10px;
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+
+.chat-footer button {
+    background-color: var(--primary-purple);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.chat-footer button:hover {
+    background-color: var(--dark-purple);
+}
+
+/* Ajuste Responsive para el chat */
+@media (max-width: 768px) {
+    .chat-window {
+        width: 90%; /* En celular ocupa casi todo el ancho */
+        right: 5%;
+        bottom: 20px;
+        height: 50vh;
+    }
+}
+
+       /* Estilos para los PLACEHOLDERS (Cajas grises donde irán tus fotos) */
+.image-placeholder, .video-placeholder, .map-placeholder {
+            background-color: var(--placeholder-gray);
+            color: #555;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border: 2px dashed #999;
+            overflow: hidden; /* Para asegurar que la imagen no se salga si es muy grande */
+}
+        
+        /* Cuando insertes la etiqueta <img> dentro, usa esta clase para que ocupe todo el espacio */
+.img-fit {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+}
+
+.hover-gallery-grid {
+    list-style: none; /* Elimina las viñetas de la lista */
+    display: flex; /* Coloca los items en fila */
+    gap: 5px;
+    padding: 0;
+    margin-top: 30px;
+    padding-bottom: 40px;
+    min-height: 350px; /* Altura mínima para que el efecto se vea bien */
+}
+
+.hover-gallery-grid li {
+    /* Estilos base del snippet en la imagen (adaptado de .container li) */
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 350px; /* El ancho inicial de cada item (contraído) */
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out; /* Transición suave para todos los cambios */
+    border: 1.2px solid #eee;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4),
+               -2px -2px 10px rgba(0, 0, 0, 0, 0.1);
+}
+
+/* 1. Al hacer hover sobre la galería, todos los items se contraen */
+.hover-gallery-grid:hover li {
+    flex: 0 0 100px;
+}
+
+/* 2. El item individual al que se le hace hover se expande */
+.hover-gallery-grid li:hover {
+    flex: 1; /* Ocupa el espacio restante (se expande) */
+    border-radius: 10px; /* Cambia a un borde menos redondo */
+}
+
+/* 3. Estilos del texto que aparece al hacer hover */
+.hover-gallery-grid li .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    /* Degradado para que el texto se vea bien */
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    color: var(--color-text-white);
+    transform: translateY(100%); /* Inicialmente oculto fuera del borde */
+    transition: transform 0.5s ease-in-out;
+    z-index: 10;
+}
+
+.hover-gallery-grid li:hover .content {
+    transform: translateY(0); /* Mostrar contenido al hacer hover */
+}
+
+.hover-gallery-grid li h2, .hover-gallery-grid li p {
+    margin: 5px 0;
+}
+
+/* Asegura que la imagen ocupe todo el espacio de su contenedor (li) */
+.hover-gallery-grid li img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    border-radius: 50px; /* Para que la imagen coincida con el borde de li */
+    transition: border-radius 0.5s ease-in-out;
+}
+
+.hover-gallery-grid li:hover img {
+    border-radius: 10px; /* Borde menos redondeado al expandirse */
+}
+
+
+
+.two-column-layout {
+            display: flex;
+            flex-direction: column; /* Móvil: Columna vertical */
+            gap: 30px;
+}
+
+.hero-section .content h2,
+.hero-section .content p {
+    color: rgb(255, 255, 255);
+}
